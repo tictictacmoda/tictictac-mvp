@@ -6,12 +6,12 @@ export default function App() {
   const [participantes, setParticipantes] = useState([])
 
   async function carregar() {
-    const response = await axios.get('http://localhost:3001/api/participantes')
+    const response = await axios.get('https://tictictac-mvp-production.up.railway.app/api/participantes')
     setParticipantes(response.data)
   }
 
   async function criar() {
-    await axios.post('http://localhost:3001/api/participantes', {
+    await axios.post('https://tictictac-mvp-production.up.railway.app/api/participantes', {
       nome: 'Novo Participante',
       email: 'email@teste.com',
       area: 'Tecnologia'
