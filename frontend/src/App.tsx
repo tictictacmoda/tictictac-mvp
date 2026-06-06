@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const API = ''
+const API = 'https://tictictac-mvp-production.up.railway.app'
 
 const AREAS = ['Política','Político','Tecnologia','Educação','Saúde','Meio Ambiente','Economia','Cultura','Direitos Humanos','Outro']
 const ESTADOS = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO']
@@ -131,8 +131,9 @@ export default function App() {
 
   // Dados para gráficos
   const porArea = AREAS.map(a=>({area:a,n:(participantes||[]).filter(p=>p.area===a).length})).filter(x=>x.n>0)
-const porRegiao = [...new Set((participantes||[]).map(p=>p.regiao).filter(Boolean))].map(r=>({regiao:r,n:(participantes||[]).filter(p=>p.regiao===r).length}))
-const maxArea = porArea.length > 0 ? Math.max(...porArea.map(x=>x.n),1) : 1
+  const porRegiao = [...new Set((participantes||[]).map(p=>p.regiao).filter(Boolean))].map(r=>({regiao:r,n:(participantes||[]).filter(p=>p.regiao===r).length}))
+  const maxArea = porArea.length > 0 ? Math.max(...porArea.map(x=>x.n),1) : 1
+
   const s: Record<string,any> = {
     app: {fontFamily:"'Segoe UI',sans-serif",background:'#f0f2f5',minHeight:'100vh',display:'flex'},
     sidebar: {width:220,background:'#1a2332',color:'#fff',padding:'24px 0',display:'flex',flexDirection:'column',gap:4,minHeight:'100vh',flexShrink:0},
