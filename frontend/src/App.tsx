@@ -124,7 +124,7 @@ export default function App() {
     const a = document.createElement('a'); a.href=url; a.download='participantes.csv'; a.click()
   }
 
-  const filtrados = participantes.filter(p => {
+  const filtrados = (participantes||[]).filter(p => {
     return (!busca||p.nome.toLowerCase().includes(busca.toLowerCase())) &&
            (!filtroArea||p.area===filtroArea) && (!filtroEstado||p.estado===filtroEstado)
   })
@@ -225,14 +225,14 @@ export default function App() {
         {tela==='painel' && (<>
           <div style={s.header}>
             <div style={s.title}>Painel geral</div>
-            <div style={s.badge}>👥 {participantes.length} participantes</div>
+            <div style={s.badge}>👥 {(participantes||[]).length} participantes</div>
           </div>
           <div style={s.cards}>
             {[
-              {n:participantes.length,l:'Total de participantes',i:'👥'},
-              {n:participantes.filter(p=>p.expInternacional).length,l:'Exp. internacional',i:'🌍'},
-              {n:[...new Set(participantes.map(p=>p.estado))].length,l:'Estados representados',i:'📍'},
-              {n:[...new Set(participantes.map(p=>p.area))].length,l:'Áreas temáticas',i:'🏷️'},
+              {n:(participantes||[]).length,l:'Total de participantes',i:'👥'},
+              {n:(participantes||[]).filter(p=>p.expInternacional).length,l:'Exp. internacional',i:'🌍'},
+              {n:[...new Set((participantes||[]).map(p=>p.estado))].length,l:'Estados representados',i:'📍'},
+              {n:[...new Set((participantes||[]).map(p=>p.area))].length,l:'Áreas temáticas',i:'🏷️'},
             ].map((c,i)=>(
               <div key={i} style={s.card}>
                 <div style={{fontSize:24,marginBottom:8}}>{c.i}</div>
@@ -273,8 +273,8 @@ export default function App() {
             <div style={s.box}>
               <div style={s.boxTitle}>🌍 EXPERIÊNCIA INTERNACIONAL</div>
               {[{l:'Com experiência',v:true,c:'#2e7d32'},{l:'Sem experiência',v:false,c:'#888'}].map(({l,v,c})=>{
-                const n = participantes.filter(p=>p.expInternacional===v).length
-                const pct = participantes.length ? Math.round((n/participantes.length)*100) : 0
+                const n = (participantes||[]).filter(p=>p.expInternacional===v).length
+                const pct = (participantes||[]).length ? Math.round((n/(participantes||[]).length)*100) : 0
                 return (
                   <div key={l} style={{marginBottom:16}}>
                     <div style={{display:'flex',justifyContent:'space-between',marginBottom:4,fontSize:13}}>
@@ -295,7 +295,7 @@ export default function App() {
             <table style={s.table}>
               <thead><tr>{['','Nome','Cargo','Área','Estado','Exp. Intl.'].map(h=><th key={h} style={s.th}>{h}</th>)}</tr></thead>
               <tbody>
-                {participantes.slice(-5).reverse().map(p=>(
+                {(participantes||[]).slice(-5).reverse().map(p=>(
                   <tr key={p.id}>
                     <td style={{...s.td,width:50}}>
                       {p.foto ? <img src={`${API}${p.foto}`} style={s.avatar} alt="foto"/> : <div style={s.avatarPlaceholder}>{p.nome[0]}</div>}
