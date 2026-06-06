@@ -298,7 +298,7 @@ export default function App() {
                 {(participantes||[]).slice(-5).reverse().map(p=>(
                   <tr key={p.id}>
                     <td style={{...s.td,width:50}}>
-                      {p.foto ? <img src={`${API}${p.foto}`} style={s.avatar} alt="foto"/> : <div style={s.avatarPlaceholder}>{p.nome[0]}</div>}
+                      {p.foto ? <img src={`${API}${p.foto}`} style={s.avatar} alt="foto"/> : <div style={s.avatarPlaceholder}>{(p.nome||'?')[0]}</div>}
                     </td>
                     <td style={{...s.td,fontWeight:600}}>{p.nome}</td>
                     <td style={s.td}>{p.cargo}</td>
@@ -342,7 +342,7 @@ export default function App() {
                 {filtrados.map(p=>(
                   <tr key={p.id}>
                     <td style={{...s.td,width:50}}>
-                      {p.foto?<img src={`${API}${p.foto}`} style={s.avatar} alt="foto"/>:<div style={s.avatarPlaceholder}>{p.nome[0]}</div>}
+                      {p.foto?<img src={`${API}${p.foto}`} style={s.avatar} alt="foto"/>:<div style={s.avatarPlaceholder}>{(p.nome||'?')[0]}</div>}
                     </td>
                     <td style={{...s.td,fontWeight:600}}>{p.nome}</td>
                     <td style={s.td}>{p.cargo}</td>
