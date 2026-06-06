@@ -1,0 +1,3 @@
+JWT_SECRET=uma_chave_secreta_segura
+GMAIL_USER=seuemail@gmail.com
+GMAIL_PASS=sua_senha_ou_app_password
