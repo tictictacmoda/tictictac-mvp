@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const API = 'https://tictictac-mvp-production.up.railway.app'
+const API = ''
 
 const AREAS = ['Política','Político','Tecnologia','Educação','Saúde','Meio Ambiente','Economia','Cultura','Direitos Humanos','Outro']
 const ESTADOS = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO']
