@@ -3,3 +3,4 @@
   to = "https://tictictac-mvp-production.up.railway.app/api/:splat"
   status = 200
   force = true
+  headers = {X-From = "Netlify"}
